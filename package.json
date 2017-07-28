@@ -1,0 +1,10 @@
+{
+  "name": "GetWord",
+  "description": "A website to generate passwords",
+  "devDependencies": {
+    "gulp": "^3.9",
+    "gulp-concat": "^2.6",
+    "gulp-clean-css": "^3.4",
+    "gulp-uglify": "^3.0"
+  }
+}
