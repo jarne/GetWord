@@ -30,24 +30,26 @@ class GetWord {
 
         if(count($urlParts) > 6 AND $urlParts[1] == "api") {
             $length = $urlParts[2];
-            $useLetters = $this->stringToChance($urlParts[3]);
-            $useNumbers = $this->stringToChance($urlParts[4]);
-            $useSpecialCharacters = $this->stringToChance($urlParts[5]);
+            $useLetters = $urlParts[3];
+            $useNumbers = $urlParts[4];
+            $useSpecialCharacters = $urlParts[5];
             $easyToRemember = $urlParts[6];
 
-            if(is_numeric($length)) {
-                if($easyToRemember == "true") {
-                    $generatedPassword = $this->getPassword()->generate($length, $useLetters, $useNumbers, $useSpecialCharacters);
-                } else {
-                    $generatedPassword = $this->getPassword()->generateEasyToRemember($length, $useLetters, $useNumbers, $useSpecialCharacters);
+            if($this->isValidLength($length)) {
+                if($this->isValidPercentage($useLetters) AND $this->isValidPercentage($useNumbers) AND $this->isValidPercentage($useSpecialCharacters)) {
+                    if($easyToRemember == "true") {
+                        $generatedPassword = $this->getPassword()->generateEasyToRemember($length, $useLetters, $useNumbers, $useSpecialCharacters);
+                    } else {
+                        $generatedPassword = $this->getPassword()->generate($length, $useLetters, $useNumbers, $useSpecialCharacters);
+                    }
+
+                    $this->goingToReturnJson();
+
+                    return json_encode(array(
+                        "status" => "success",
+                        "generatedPassword" => $generatedPassword
+                    ));
                 }
-
-                $this->goingToReturnJson();
-
-                return json_encode(array(
-                    "status" => "success",
-                    "generatedPassword" => $generatedPassword
-                ));
             }
 
             return json_encode(array(
@@ -59,17 +61,31 @@ class GetWord {
     }
 
     /**
-     * Get the chance from a boolean string
+     * Check if a percentage is valid
      *
-     * @param string $string
-     * @return int
+     * @param string $value
+     * @return bool
      */
-    public function stringToChance(string $string) {
-        if($string == "true") {
-            return 1;
+    public function isValidPercentage(string $value) {
+        if(is_numeric($value)) {
+            return ($value >= 0) AND ($value <= 100);
         }
 
-        return 0;
+        return false;
+    }
+
+    /**
+     * Check if a length is valid
+     *
+     * @param string $length
+     * @return bool
+     */
+    public function isValidLength(string $length) {
+        if(is_numeric($length)) {
+            return ($length > 0) AND ($length <= 100);
+        }
+
+        return false;
     }
 
     /**

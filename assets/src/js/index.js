@@ -4,25 +4,24 @@
 
 function fetch() {
     var length = $("#length").val();
-    var useLetters = $("#useLetters").is(":checked");
-    var useNumbers = $("#useNumbers").is(":checked");
-    var useSpecialCharacters = $("#useSpecialCharacters").is(":checked");
+    var useLetters = $("#useLetters").val();
+    var useNumbers = $("#useNumbers").val();
+    var useSpecialCharacters = $("#useSpecialCharacters").val();
     var easyToRemember = $("#easyToRemember").is(":checked");
 
-    $("#result").html("<div class=\"spinner\"> </div>");
+    $("#result").html("");
+    $("#loading").show();
 
     $.ajax({
         type: "GET",
         url: "/api/" + length + "/" + useLetters + "/" + useNumbers + "/" + useSpecialCharacters + "/" + easyToRemember,
         success: function(data) {
             if(data.status === "success") {
+                $("#loading").hide();
                 $("#result").html(data.generatedPassword);
             } else {
-                $("#result").html("");
+                $("#loading").hide();
             }
-        },
-        failed: function() {
-            $("#result").html("");
         }
     });
 }
