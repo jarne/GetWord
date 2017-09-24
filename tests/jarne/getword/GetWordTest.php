@@ -33,7 +33,7 @@ class GetWordTest extends TestCase {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(
-            "REQUEST_URI" => "localhost/api/12/true/false/true/true"
+            "REQUEST_URI" => "localhost/api/12/70/30/40/true"
         ));
 
         $data = json_decode($output);
@@ -43,5 +43,27 @@ class GetWordTest extends TestCase {
 
         $this->assertEquals("success", $status);
         $this->assertEquals(12, strlen($generatedPassword));
+    }
+
+    /**
+     * Test with only numeric password if the API works
+     *
+     * @runInSeparateProcess
+     */
+    public function testNumericApi() {
+        $getWord = new GetWord();
+
+        $output = $getWord->process(array(
+            "REQUEST_URI" => "localhost/api/12/0/100/0/false"
+        ));
+
+        $data = json_decode($output);
+
+        $status = $data->status;
+        $generatedPassword = $data->generatedPassword;
+
+        $this->assertEquals("success", $status);
+        $this->assertEquals(12, strlen($generatedPassword));
+        $this->assertTrue(is_numeric($generatedPassword));
     }
 }
