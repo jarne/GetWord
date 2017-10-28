@@ -1,0 +1,23 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.1-cli-node
+    steps:
+      # Checkout branch
+      - checkout
+
+      # Install Composer dependencies
+      - restore_cache:
+          keys:
+            - composer-{{ checksum composer.json }}
+      - run: composer install
+      - save_cache:
+          keys:
+            - composer-{{ checksum composer.json }}
+          paths:
+            - vendor
+
+      # Run tests with PHPUnit
+      - run: phpunit
