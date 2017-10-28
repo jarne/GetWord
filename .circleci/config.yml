@@ -18,4 +18,4 @@ jobs:
             - vendor
 
       # Run tests with PHPUnit
-      - run: phpunit
+      - run: php vendor/bin/phpunit
