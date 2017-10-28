@@ -11,12 +11,11 @@ jobs:
       # Install Composer dependencies
       - restore_cache:
           keys:
-            - composer-{{ checksum composer.json }}
-            - composer-
+            - composer-{{ checksum "composer.json" }}
       - run: composer install
       - save_cache:
           keys:
-            - composer-{{ checksum composer.json }}
+            - composer-{{ checksum "composer.json" }}
           paths:
             - vendor
 
