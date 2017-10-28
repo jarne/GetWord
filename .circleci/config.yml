@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.1-cli-node
+      - image: circleci/php:7.1-browsers
     steps:
       # Checkout branch
       - checkout
@@ -12,6 +12,7 @@ jobs:
       - restore_cache:
           keys:
             - composer-{{ checksum composer.json }}
+            - composer-
       - run: composer install
       - save_cache:
           keys:
