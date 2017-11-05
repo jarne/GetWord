@@ -12,13 +12,13 @@ use PHPUnit\Framework\TestCase;
 
 class GetWordTest extends TestCase {
     /**
-     * Test if the website works
+     * Test if the website returns valid data
      */
     public function testProcess() {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(
-            "REQUEST_URI" => ""
+            "REQUEST_URI" => "localhost"
         ));
 
         $this->assertContains("GetWord", $output);
@@ -33,20 +33,70 @@ class GetWordTest extends TestCase {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(
-            "REQUEST_URI" => "localhost/api/12/70/30/40/true"
+            "REQUEST_URI" => "localhost/api/7/70/30/40/true"
         ));
 
         $data = json_decode($output);
+
+        $this->assertTrue(isset($data->status));
+        $this->assertTrue(isset($data->generatedPassword));
 
         $status = $data->status;
         $generatedPassword = $data->generatedPassword;
 
         $this->assertEquals("success", $status);
-        $this->assertEquals(12, strlen($generatedPassword));
+        $this->assertEquals(7, strlen($generatedPassword));
     }
 
     /**
-     * Test with only numeric password if the API works
+     * Test the API with invalid parameters
+     *
+     * @runInSeperateProcess
+     */
+    public function checkApiFailed() {
+        $getWord = new GetWord();
+
+        $output = $getWord->process(array(
+            "REQUEST_URI" => "localhost/api/0/0/0/0/false"
+        ));
+
+        $data = json_decode($output);
+
+        $this->assertTrue(isset($data->status));
+        $this->assertNotTrue(isset($data->generatedPassword));
+
+        $status = $data->status;
+
+        $this->assertEquals("failed", $status);
+    }
+
+    /**
+     * Check a password with only letters in it
+     *
+     * @runInSeparateProcess
+     */
+    public function testLettersApi() {
+        $getWord = new GetWord();
+
+        $output = $getWord->process(array(
+            "REQUEST_URI" => "localhost/api/15/100/0/0/false"
+        ));
+
+        $data = json_decode($output);
+
+        $this->assertTrue(isset($data->status));
+        $this->assertTrue(isset($data->generatedPassword));
+
+        $status = $data->status;
+        $generatedPassword = $data->generatedPassword;
+
+        $this->assertEquals("success", $status);
+        $this->assertEquals(15, strlen($generatedPassword));
+        $this->assertTrue(ctype_alpha($generatedPassword));
+    }
+
+    /**
+     * Check a password with only numbers in it
      *
      * @runInSeparateProcess
      */
@@ -54,16 +104,19 @@ class GetWordTest extends TestCase {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(
-            "REQUEST_URI" => "localhost/api/12/0/100/0/false"
+            "REQUEST_URI" => "localhost/api/23/0/100/0/false"
         ));
 
         $data = json_decode($output);
+
+        $this->assertTrue(isset($data->status));
+        $this->assertTrue(isset($data->generatedPassword));
 
         $status = $data->status;
         $generatedPassword = $data->generatedPassword;
 
         $this->assertEquals("success", $status);
-        $this->assertEquals(12, strlen($generatedPassword));
+        $this->assertEquals(23, strlen($generatedPassword));
         $this->assertTrue(is_numeric($generatedPassword));
     }
 }
