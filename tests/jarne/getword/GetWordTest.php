@@ -14,7 +14,7 @@ class GetWordTest extends TestCase {
     /**
      * Test if the website returns valid data
      */
-    public function testProcess() {
+    public function testProcess(): void {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(
@@ -29,7 +29,7 @@ class GetWordTest extends TestCase {
      *
      * @runInSeparateProcess
      */
-    public function testApi() {
+    public function testApi(): void {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(
@@ -53,7 +53,7 @@ class GetWordTest extends TestCase {
      *
      * @runInSeperateProcess
      */
-    public function checkApiFailed() {
+    public function checkApiFailed(): void {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(
@@ -75,7 +75,7 @@ class GetWordTest extends TestCase {
      *
      * @runInSeparateProcess
      */
-    public function testLettersApi() {
+    public function testLettersApi(): void {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(
@@ -100,7 +100,7 @@ class GetWordTest extends TestCase {
      *
      * @runInSeparateProcess
      */
-    public function testNumericApi() {
+    public function testNumericApi(): void {
         $getWord = new GetWord();
 
         $output = $getWord->process(array(

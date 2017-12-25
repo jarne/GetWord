@@ -24,7 +24,7 @@ class GetWord {
      * @param array $server
      * @return string
      */
-    public function process(array $server) {
+    public function process(array $server): string {
         $requestUri = $server["REQUEST_URI"];
         $urlParts = explode("/", $requestUri);
 
@@ -37,7 +37,7 @@ class GetWord {
 
             if($this->isValidLength($length)) {
                 if($this->isValidPercentage($useLetters) AND $this->isValidPercentage($useNumbers) AND $this->isValidPercentage($useSpecialCharacters)) {
-                    if($easyToRemember == "true") {
+                    if($easyToRemember === "true") {
                         $generatedPassword = $this->getPassword()->generateEasyToRemember($length, $useLetters, $useNumbers, $useSpecialCharacters);
                     } else {
                         $generatedPassword = $this->getPassword()->generate($length, $useLetters, $useNumbers, $useSpecialCharacters);
@@ -66,7 +66,7 @@ class GetWord {
      * @param string $value
      * @return bool
      */
-    public function isValidPercentage(string $value) {
+    public function isValidPercentage(string $value): bool {
         if(is_numeric($value)) {
             return ($value >= 0) AND ($value <= 100);
         }
@@ -80,7 +80,7 @@ class GetWord {
      * @param string $length
      * @return bool
      */
-    public function isValidLength(string $length) {
+    public function isValidLength(string $length): bool {
         if(is_numeric($length)) {
             return ($length > 0) AND ($length <= 100);
         }
@@ -91,7 +91,7 @@ class GetWord {
     /**
      * Set content type to JSON
      */
-    public function goingToReturnJson() {
+    public function goingToReturnJson(): void {
         header("Content-Type: application/json");
     }
 
