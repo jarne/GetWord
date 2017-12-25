@@ -28,7 +28,7 @@ class GetWord {
         $requestUri = $server["REQUEST_URI"];
         $urlParts = explode("/", $requestUri);
 
-        if(count($urlParts) > 6 AND $urlParts[1] == "api") {
+        if(count($urlParts) > 6 AND $urlParts[1] === "api") {
             $length = $urlParts[2];
             $useLetters = $urlParts[3];
             $useNumbers = $urlParts[4];
