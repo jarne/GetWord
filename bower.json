@@ -2,7 +2,7 @@
   "name": "GetWord",
   "description": "A website to generate passwords",
   "dependencies": {
-    "jquery": "^3.2",
-    "materialize": "^0.98"
+    "jquery": "^3.3",
+    "materialize": "^0.100"
   }
 }

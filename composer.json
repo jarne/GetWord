@@ -2,7 +2,7 @@
     "name": "jarne/GetWord",
     "description": "A website to generate passwords",
     "type": "project",
-    "license": "Creative Commons Attribution-ShareAlike 4.0 International License",
+    "license": "CC-BY-SA-4.0",
     "autoload": {
         "psr-0": {
             "jarne\\getword": "src/"
