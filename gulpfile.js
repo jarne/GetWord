@@ -28,11 +28,6 @@ gulp.task("materialize-js", function() {
         .pipe(gulp.dest("assets/dest/js"))
 });
 
-gulp.task("materialize-fonts", function() {
-    return gulp.src("bower_components/materialize/dist/fonts/*/*")
-        .pipe(gulp.dest("assets/dest/fonts"))
-});
-
 gulp.task("index-css", function() {
     return gulp.src("assets/src/css/index.css")
         .pipe(concat("index.min.css"))
@@ -52,10 +47,9 @@ gulp.task("watch", function() {
 
     gulp.watch("assets/src/sass/components/_variables.scss", ["materialize-css"]);
     gulp.watch("bower_components/materialize/dist/js/materialize.min.js", ["materialize-js"]);
-    gulp.watch("bower_components/materialize/dist/fonts/*/*", ["materialize-fonts"]);
 
     gulp.watch("assets/src/css/index.css", ["index-css"]);
     gulp.watch("assets/src/js/index.js", ["index-js"]);
 });
 
-gulp.task("default", ["jquery", "materialize-css", "materialize-js", "materialize-fonts", "index-css", "index-js"]);
+gulp.task("default", ["jquery", "materialize-css", "materialize-js", "index-css", "index-js"]);
