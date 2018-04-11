@@ -6,10 +6,10 @@
  * Time: 09:39
  */
 
-require_once "vendor/autoload.php";
+require "vendor/autoload.php";
 
 use jarne\getword\GetWord;
 
-$getText = new GetWord();
+$getWord = new GetWord();
 
-echo $getText->process($_SERVER);
+echo $getWord->process($_SERVER);

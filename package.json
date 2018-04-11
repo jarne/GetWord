@@ -1,9 +1,8 @@
 {
   "name": "getword",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A website to generate passwords",
   "homepage": "https://bitbucket.org/thejarne/getword",
-  "license": "CC-BY-SA-4.0",
   "author": {
     "name": "Jarne",
     "url": "https://bitbucket.org/thejarne"
@@ -15,7 +14,7 @@
   "devDependencies": {
     "gulp": "^3.9",
     "gulp-concat": "^2.6",
-    "gulp-sass": "^3.1",
+    "gulp-sass": "^4.0",
     "gulp-replace": "^0.6",
     "gulp-clean-css": "^3.9",
     "gulp-uglify": "^3.0"

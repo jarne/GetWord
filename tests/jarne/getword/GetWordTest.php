@@ -17,9 +17,11 @@ class GetWordTest extends TestCase {
     public function testProcess(): void {
         $getWord = new GetWord();
 
-        $output = $getWord->process(array(
-            "REQUEST_URI" => "localhost"
-        ));
+        $output = $getWord->process(
+            array(
+                "REQUEST_URI" => "localhost",
+            )
+        );
 
         $this->assertContains("GetWord", $output);
     }
@@ -32,9 +34,11 @@ class GetWordTest extends TestCase {
     public function testApi(): void {
         $getWord = new GetWord();
 
-        $output = $getWord->process(array(
-            "REQUEST_URI" => "localhost/api/7/70/30/40/true"
-        ));
+        $output = $getWord->process(
+            array(
+                "REQUEST_URI" => "localhost/api/7/70/30/40/true",
+            )
+        );
 
         $data = json_decode($output);
 
@@ -56,9 +60,11 @@ class GetWordTest extends TestCase {
     public function checkApiFailed(): void {
         $getWord = new GetWord();
 
-        $output = $getWord->process(array(
-            "REQUEST_URI" => "localhost/api/0/0/0/0/false"
-        ));
+        $output = $getWord->process(
+            array(
+                "REQUEST_URI" => "localhost/api/0/0/0/0/false",
+            )
+        );
 
         $data = json_decode($output);
 
@@ -78,9 +84,11 @@ class GetWordTest extends TestCase {
     public function testLettersApi(): void {
         $getWord = new GetWord();
 
-        $output = $getWord->process(array(
-            "REQUEST_URI" => "localhost/api/15/100/0/0/false"
-        ));
+        $output = $getWord->process(
+            array(
+                "REQUEST_URI" => "localhost/api/15/100/0/0/false",
+            )
+        );
 
         $data = json_decode($output);
 
@@ -103,9 +111,11 @@ class GetWordTest extends TestCase {
     public function testNumericApi(): void {
         $getWord = new GetWord();
 
-        $output = $getWord->process(array(
-            "REQUEST_URI" => "localhost/api/23/0/100/0/false"
-        ));
+        $output = $getWord->process(
+            array(
+                "REQUEST_URI" => "localhost/api/23/0/100/0/false",
+            )
+        );
 
         $data = json_decode($output);
 

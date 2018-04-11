@@ -11,7 +11,7 @@ var uglify = require("gulp-uglify");
 
 gulp.task("jquery", function() {
     return gulp.src("bower_components/jquery/dist/jquery.min.js")
-        .pipe(gulp.dest("assets/dest/js"))
+        .pipe(gulp.dest("assets/dest/js"));
 });
 
 gulp.task("materialize-css", function() {
@@ -20,26 +20,26 @@ gulp.task("materialize-css", function() {
         .pipe(sass())
         .pipe(cleanCss())
         .pipe(concat("materialize.min.css"))
-        .pipe(gulp.dest("assets/dest/css"))
+        .pipe(gulp.dest("assets/dest/css"));
 });
 
 gulp.task("materialize-js", function() {
     return gulp.src("bower_components/materialize/dist/js/materialize.min.js")
-        .pipe(gulp.dest("assets/dest/js"))
+        .pipe(gulp.dest("assets/dest/js"));
 });
 
 gulp.task("index-css", function() {
     return gulp.src("assets/src/css/index.css")
         .pipe(concat("index.min.css"))
         .pipe(cleanCss())
-        .pipe(gulp.dest("assets/dest/css"))
+        .pipe(gulp.dest("assets/dest/css"));
 });
 
 gulp.task("index-js", function() {
     return gulp.src("assets/src/js/index.js")
         .pipe(concat("index.min.js"))
         .pipe(uglify())
-        .pipe(gulp.dest("assets/dest/js"))
+        .pipe(gulp.dest("assets/dest/js"));
 });
 
 gulp.task("watch", function() {

@@ -36,25 +36,41 @@ class GetWord {
             $easyToRemember = $urlParts[6];
 
             if($this->isValidLength($length)) {
-                if($this->isValidPercentage($useLetters) AND $this->isValidPercentage($useNumbers) AND $this->isValidPercentage($useSpecialCharacters)) {
+                if($this->isValidPercentage($useLetters) AND $this->isValidPercentage(
+                        $useNumbers
+                    ) AND $this->isValidPercentage($useSpecialCharacters)) {
                     if($easyToRemember === "true") {
-                        $generatedPassword = $this->getPassword()->generateEasyToRemember($length, $useLetters, $useNumbers, $useSpecialCharacters);
+                        $generatedPassword = $this->getPassword()->generateEasyToRemember(
+                            $length,
+                            $useLetters,
+                            $useNumbers,
+                            $useSpecialCharacters
+                        );
                     } else {
-                        $generatedPassword = $this->getPassword()->generate($length, $useLetters, $useNumbers, $useSpecialCharacters);
+                        $generatedPassword = $this->getPassword()->generate(
+                            $length,
+                            $useLetters,
+                            $useNumbers,
+                            $useSpecialCharacters
+                        );
                     }
 
                     $this->goingToReturnJson();
 
-                    return json_encode(array(
-                        "status" => "success",
-                        "generatedPassword" => $generatedPassword
-                    ));
+                    return json_encode(
+                        array(
+                            "status" => "success",
+                            "generatedPassword" => $generatedPassword,
+                        )
+                    );
                 }
             }
 
-            return json_encode(array(
-                "status" => "failed"
-            ));
+            return json_encode(
+                array(
+                    "status" => "failed",
+                )
+            );
         }
 
         return file_get_contents("templates/index.html");
