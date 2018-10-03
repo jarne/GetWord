@@ -1,7 +1,7 @@
 {
     "name": "jarne/getword",
     "description": "A website to generate passwords",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "project",
     "homepage": "https://bitbucket.org/thejarne/getword",
     "authors": [
@@ -19,7 +19,7 @@
         "jarne/password": "^1.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^7.3"
     },
     "autoload": {
         "psr-0": {
