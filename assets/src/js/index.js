@@ -1,51 +1,35 @@
 /**
- * Created by jarne on 13.11.16.
+ * GetWord | client side api script
  */
 
-function fetch() {
-    var length = $("#length").val();
-    var useLetters = $("#useLetters").val();
-    var useNumbers = $("#useNumbers").val();
-    var useSpecialCharacters = $("#useSpecialCharacters").val();
-    var easyToRemember = $("#easyToRemember").is(":checked");
+var passwordDisplay = $("#passwordDisplay");
 
-    $("#result").html("");
-    $("#loading").show();
+var length = $("#length");
+var letters = $("#letters");
+var numbers = $("#numbers");
+var specialChars = $("#specialCharts");
+var easyToRem = $("#easyToRem");
+
+function fetch() {
+    passwordDisplay.html("");
 
     $.ajax({
         type: "GET",
-        url: "/api/" + length + "/" + useLetters + "/" + useNumbers + "/" + useSpecialCharacters + "/" + easyToRemember,
+        url: "/api/" + length.val() + "/" + letters.val() + "/" + numbers.val() + "/" + specialChars.val() + "/" + easyToRem.is(":checked"),
         success: function(data) {
             if(data.status === "success") {
-                $("#loading").hide();
-                $("#result").html(data.generatedPassword);
+                passwordDisplay.html(data.generatedPassword);
             } else {
-                $("#loading").hide();
+                alert("An unknown error occurred!");
             }
         }
     });
 }
 
-$(document).ready(function() {
-    fetch();
-});
+length.change(fetch);
+letters.change(fetch);
+numbers.change(fetch);
+specialChars.change(fetch);
+easyToRem.change(fetch);
 
-$("#length").change(function() {
-    fetch();
-});
-
-$("#useLetters").change(function() {
-    fetch();
-});
-
-$("#useNumbers").change(function() {
-    fetch();
-});
-
-$("#useSpecialCharacters").change(function() {
-    fetch();
-});
-
-$("#easyToRemember").change(function() {
-    fetch();
-});
+$(document).ready(fetch);

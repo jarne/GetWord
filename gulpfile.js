@@ -4,8 +4,6 @@
 
 var gulp = require("gulp");
 var concat = require("gulp-concat");
-var sass = require("gulp-sass");
-var replace = require("gulp-replace");
 var cleanCss = require("gulp-clean-css");
 var uglify = require("gulp-uglify");
 
@@ -14,17 +12,13 @@ gulp.task("jquery", function() {
         .pipe(gulp.dest("assets/dest/js"));
 });
 
-gulp.task("materialize-css", function() {
-    return gulp.src("bower_components/materialize/sass/materialize.scss")
-        .pipe(replace("@import \"components/variables\";", "@import \"../../../assets/src/sass/components/variables\";"))
-        .pipe(sass())
-        .pipe(cleanCss())
-        .pipe(concat("materialize.min.css"))
+gulp.task("bootstrap-css", function() {
+    return gulp.src("bower_components/bootstrap/dist/css/bootstrap.min.css")
         .pipe(gulp.dest("assets/dest/css"));
 });
 
-gulp.task("materialize-js", function() {
-    return gulp.src("bower_components/materialize/dist/js/materialize.min.js")
+gulp.task("bootstrap-js", function() {
+    return gulp.src("bower_components/bootstrap/dist/js/bootstrap.min.js")
         .pipe(gulp.dest("assets/dest/js"));
 });
 
@@ -45,11 +39,11 @@ gulp.task("index-js", function() {
 gulp.task("watch", function() {
     gulp.watch("bower_components/jquery/jquery.min.js", ["jquery"]);
 
-    gulp.watch("assets/src/sass/components/_variables.scss", ["materialize-css"]);
-    gulp.watch("bower_components/materialize/dist/js/materialize.min.js", ["materialize-js"]);
+    gulp.watch("bower_components/bootstrap/dist/css/bootstrap.min.css", ["bootstrap-css"]);
+    gulp.watch("bower_components/bootstrap/dist/js/bootstrap.min.js", ["bootstrap-js"]);
 
     gulp.watch("assets/src/css/index.css", ["index-css"]);
     gulp.watch("assets/src/js/index.js", ["index-js"]);
 });
 
-gulp.task("default", ["jquery", "materialize-css", "materialize-js", "index-css", "index-js"]);
+gulp.task("default", ["jquery", "bootstrap-css", "bootstrap-js", "index-css", "index-js"]);

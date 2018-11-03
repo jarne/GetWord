@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link type="text/css" rel="stylesheet" href="/assets/dest/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="/assets/dest/css/index.min.css">
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="/assets/dest/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/dest/css/index.min.css" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -26,61 +25,30 @@
     <title>GetWord</title>
 </head>
 <body>
-<nav>
-    <div class="nav-wrapper">
-        <a class="brand-logo center"><i class="material-icons">lock</i> GetWord</a>
-    </div>
-</nav>
 <div class="container">
-    <div class="center">
-        <div class="preloader-wrapper active" id="loading">
-            <div class="spinner-layer spinner-yellow-only">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div>
-                <div class="gap-patch">
-                    <div class="circle"></div>
-                </div>
-                <div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
-            </div>
-        </div>
-        <h2 id="result"></h2>
-    </div>
-    <hr>
+    <h1>GetWord</h1>
     <br>
-    <div class="container">
-        <p>
-            <label for="length">Length</label>
-            <input type="number" id="length" value="8">
-        </p>
-        <p>
-            <label for="useLetters">Use letters</label>
-            <span class="range-field">
-                <input type="range" id="useLetters" min="0" max="100" value="75" />
-            </span>
-        </p>
-        <p>
-            <label for="useNumbers">Use numbers</label>
-            <span class="range-field">
-                <input type="range" id="useNumbers" min="0" max="100" value="25" />
-            </span>
-        </p>
-        <p>
-            <label for="useSpecialCharacters">Use special characters</label>
-            <span class="range-field">
-                <input type="range" id="useSpecialCharacters" min="0" max="100" value="50" />
-            </span>
-        </p>
-        <p>
-            <input type="checkbox" id="easyToRemember" checked>
-            <label for="easyToRemember">Easy to remember</label>
-        </p>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page" id="passwordDisplay">...</li>
+        </ol>
+    </nav>
+    <br>
+    <p>length</p>
+    <p><input type="number" class="form-control" id="length" value="8"></p>
+    <p>letters</p>
+    <p><input type="range" class="custom-range" id="letters" value="75"></p>
+    <p>numbers</p>
+    <p><input type="range" class="custom-range" id="numbers" value="25"></p>
+    <p>special characters</p>
+    <p><input type="range" class="custom-range" id="specialCharts" value="50"></p>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="easyToRem" checked>
+        <label class="custom-control-label" for="easyToRem">easy to remember</label>
     </div>
 </div>
 <script type="text/javascript" src="/assets/dest/js/jquery.min.js"></script>
-<script type="text/javascript" src="/assets/dest/js/materialize.min.js"></script>
+<script type="text/javascript" src="/assets/dest/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/dest/js/index.min.js"></script>
 </body>
 </html>
