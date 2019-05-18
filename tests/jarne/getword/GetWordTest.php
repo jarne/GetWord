@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jarne
- * Date: 14.05.17
- * Time: 16:41
+ * GetWord | tests file
  */
 
 namespace jarne\getword;

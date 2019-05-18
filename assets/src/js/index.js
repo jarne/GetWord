@@ -2,34 +2,47 @@
  * GetWord | client side api script
  */
 
-var passwordDisplay = $("#passwordDisplay");
+const passwordDisplay = document.getElementById("passwordDisplay");
 
-var length = $("#length");
-var letters = $("#letters");
-var numbers = $("#numbers");
-var specialChars = $("#specialCharts");
-var easyToRem = $("#easyToRem");
+const length = document.getElementById("length");
+const letters = document.getElementById("letters");
+const numbers = document.getElementById("numbers");
+const specialChars = document.getElementById("specialCharts");
+const easyToRem = document.getElementById("easyToRem");
 
-function fetch() {
-    passwordDisplay.html("");
-
-    $.ajax({
-        type: "GET",
-        url: "/api/" + length.val() + "/" + letters.val() + "/" + numbers.val() + "/" + specialChars.val() + "/" + easyToRem.is(":checked"),
-        success: function(data) {
-            if(data.status === "success") {
-                passwordDisplay.html(data.generatedPassword);
-            } else {
-                alert("An unknown error occurred!");
-            }
-        }
-    });
+function buildCall(length, letters, numbers, specialChars, easyToRem) {
+    return "/api/" + length + "/" + letters + "/" + numbers + "/" + specialChars + "/" + easyToRem;
 }
 
-length.change(fetch);
-letters.change(fetch);
-numbers.change(fetch);
-specialChars.change(fetch);
-easyToRem.change(fetch);
+function generate() {
+    passwordDisplay.innerText = "...";
 
-$(document).ready(fetch);
+    fetch(buildCall(
+        length.value,
+        letters.value,
+        numbers.value,
+        specialChars.value,
+        easyToRem.checked
+    ))
+        .then(resp => resp.json())
+        .then(json => {
+            if(json.status === "success") {
+                passwordDisplay.innerText = json.generatedPassword;
+
+                return;
+            }
+
+            alert("An unknown error occurred!");
+        })
+        .catch(() => {
+            alert("An unknown error occurred!");
+        });
+}
+
+length.onchange = generate;
+letters.onchange = generate;
+numbers.onchange = generate;
+specialChars.onchange = generate;
+easyToRem.onchange = generate;
+
+generate();

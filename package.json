@@ -1,6 +1,6 @@
 {
   "name": "getword",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A website to generate passwords",
   "homepage": "https://github.com/jarne/GetWord",
   "author": {
@@ -12,9 +12,10 @@
     "url": "https://github.com/jarne/GetWord.git"
   },
   "devDependencies": {
+    "bootstrap": "^4.3",
     "gulp": "^4.0",
     "gulp-concat": "^2.6",
-    "gulp-clean-css": "^4.0",
-    "gulp-uglify": "^3.0"
+    "gulp-clean-css": "^4.2",
+    "gulp-minify": "^3.1"
   }
 }

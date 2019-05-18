@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jarne
- * Date: 13.11.16
- * Time: 09:39
+ * GetWord | loader file
  */
 
 require "vendor/autoload.php";
