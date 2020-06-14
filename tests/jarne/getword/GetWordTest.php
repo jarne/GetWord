@@ -20,7 +20,7 @@ class GetWordTest extends TestCase {
             )
         );
 
-        $this->assertContains("GetWord", $output);
+        $this->assertStringContainsString("GetWord", $output);
     }
 
     /**
