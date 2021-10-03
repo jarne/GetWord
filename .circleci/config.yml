@@ -18,4 +18,12 @@ jobs:
             - vendor
 
       # Run tests with PHPUnit
-      - run: php vendor/bin/phpunit
+      - run: XDEBUG_MODE=coverage php vendor/bin/phpunit --log-junit test-results/phpunit/junit.xml --coverage-html coverage/coverage-report
+
+      # Save test results
+      - store_test_results:
+          path: test-results
+
+      # Save coverage report
+      - store_artifacts:
+          path: coverage/coverage-report
