@@ -7,10 +7,15 @@ namespace jarne\getword;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @coversDefaultClass \jarne\getword\GetWord
+ */
 class GetWordTest extends TestCase
 {
     /**
      * Test if the website returns valid data
+     *
+     * @covers ::process
      */
     public function testProcess(): void
     {
@@ -28,6 +33,7 @@ class GetWordTest extends TestCase
     /**
      * Test if the API works
      *
+     * @covers ::process
      * @runInSeparateProcess
      */
     public function testApi(): void
@@ -55,7 +61,8 @@ class GetWordTest extends TestCase
     /**
      * Test the API with invalid parameters
      *
-     * @runInSeperateProcess
+     * @covers ::process
+     * @runInSeparateProcess
      */
     public function checkApiFailed(): void
     {
@@ -80,6 +87,7 @@ class GetWordTest extends TestCase
     /**
      * Check a password with only letters in it
      *
+     * @covers ::process
      * @runInSeparateProcess
      */
     public function testLettersApi(): void
@@ -108,6 +116,7 @@ class GetWordTest extends TestCase
     /**
      * Check a password with only numbers in it
      *
+     * @covers ::process
      * @runInSeparateProcess
      */
     public function testNumericApi(): void

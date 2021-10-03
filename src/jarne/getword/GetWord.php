@@ -76,7 +76,7 @@ class GetWord
             );
         }
 
-        return file_get_contents("../templates/index.html");
+        return file_get_contents(__DIR__ . "/../../../templates/index.html");
     }
 
     /**
