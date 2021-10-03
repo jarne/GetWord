@@ -141,4 +141,63 @@ class GetWordTest extends TestCase
         $this->assertEquals(23, strlen($generatedPassword));
         $this->assertTrue(is_numeric($generatedPassword));
     }
+
+    /**
+     * Test a valid percentage
+     *
+     * @covers ::isValidPercentage
+     */
+    public function testValidPercentage(): void
+    {
+        $getWord = new GetWord();
+
+        $this->assertTrue($getWord->isValidPercentage("0"));
+        $this->assertTrue($getWord->isValidPercentage("50"));
+        $this->assertTrue($getWord->isValidPercentage("67"));
+        $this->assertTrue($getWord->isValidPercentage("100"));
+    }
+
+    /**
+     * Test invalid percentage
+     *
+     * @covers ::isValidPercentage
+     */
+    public function testInvalidPercentage(): void
+    {
+        $getWord = new GetWord();
+
+        $this->assertFalse($getWord->isValidPercentage("abc"));
+        $this->assertFalse($getWord->isValidPercentage("-9"));
+        $this->assertFalse($getWord->isValidPercentage("250"));
+        $this->assertFalse($getWord->isValidPercentage(""));
+    }
+
+    /**
+     * Test a valid length
+     *
+     * @covers ::isValidLength
+     */
+    public function testValidLength(): void
+    {
+        $getWord = new GetWord();
+
+        $this->assertTrue($getWord->isValidLength("1"));
+        $this->assertTrue($getWord->isValidLength("24"));
+        $this->assertTrue($getWord->isValidLength("100"));
+    }
+
+    /**
+     * Test invalid length
+     *
+     * @covers ::isValidLength
+     */
+    public function testInvalidLength(): void
+    {
+        $getWord = new GetWord();
+
+        $this->assertFalse($getWord->isValidLength("abc"));
+        $this->assertFalse($getWord->isValidLength("-9"));
+        $this->assertFalse($getWord->isValidLength("0"));
+        $this->assertFalse($getWord->isValidLength("130"));
+    }
 }

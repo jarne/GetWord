@@ -111,6 +111,8 @@ class GetWord
 
     /**
      * Set content type to JSON
+     *
+     * @codeCoverageIgnore
      */
     public function goingToReturnJson(): void
     {
