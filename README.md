@@ -47,3 +47,7 @@ Thanks for your interest 🎉👍!
 ## 👨‍⚖️ License
 
 [MIT](https://github.com/jarne/GetWord/blob/master/LICENSE)
+
+### Attributions
+
+[Icon](https://iconarchive.com/show/small-n-flat-icons-by-paomedia/keyring-icon.html) by [paomedia](https://github.com/paomedia) (under Public Domain license)
