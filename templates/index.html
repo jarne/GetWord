@@ -2,49 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="title" content="GetWord password generator">
+    <meta name="description" content="A website to generate passwords">
+    <meta name="keywords" content="password,generator,easy,remember,characters,letters,special,numbers">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/dest/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/dest/css/index.min.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link href="/assets/dest/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/dest/css/index.min.css" rel="stylesheet">
     <title>GetWord</title>
 </head>
 <body>
 <div class="container">
     <h1>GetWord</h1>
-    <br>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page" id="passwordDisplay">...</li>
-        </ol>
-    </nav>
-    <br>
-    <p><label for="length">length</label></p>
+    <br />
+    <div class="password-display">
+        <div id="passwordDisplay"></div>
+        <div>
+            <button class="btn btn-pw-display" id="copyBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                </svg>
+            </button>
+            <button class="btn btn-pw-display" id="regenBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <br />
+    <p><label for="length" class="form-label">length</label></p>
     <p><input type="number" class="form-control" id="length" value="8"></p>
-    <p><label for="letters">letters</label></p>
-    <p><input type="range" class="custom-range" id="letters" value="75"></p>
-    <p><label for="numbers">numbers</label></p>
-    <p><input type="range" class="custom-range" id="numbers" value="25"></p>
-    <p><label for="specialCharts">special characters</label></p>
-    <p><input type="range" class="custom-range" id="specialCharts" value="50"></p>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="easyToRem" checked>
-        <label class="custom-control-label" for="easyToRem">easy to remember</label>
+    <p><label for="letters" class="form-label">letters</label></p>
+    <p><input type="range" class="form-range" id="letters" value="75"></p>
+    <p><label for="numbers" class="form-label">numbers</label></p>
+    <p><input type="range" class="form-range" id="numbers" value="25"></p>
+    <p><label for="specialCharts" class="form-label">special characters</label></p>
+    <p><input type="range" class="form-range" id="specialCharts" value="50"></p>
+    <div class="form-check form-switch">
+        <input type="checkbox" class="form-check-input" id="easyToRem" checked>
+        <label class="form-check-label" for="easyToRem">easy to remember</label>
     </div>
 </div>
 <script src="/assets/dest/js/index.min.js"></script>

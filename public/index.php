@@ -3,7 +3,7 @@
  * GetWord | loader file
  */
 
-require "vendor/autoload.php";
+require "./../vendor/autoload.php";
 
 use jarne\getword\GetWord;
 

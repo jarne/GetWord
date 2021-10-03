@@ -1,7 +1,9 @@
-# Project folder
+# IDE project folder
 /.idea
 
 # Dependencies
 /vendor
 /node_modules
-/bower_components
+
+# PHPUnit cache
+/.phpunit.cache

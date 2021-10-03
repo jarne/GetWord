@@ -1,5 +1,0 @@
-RewriteEngine On
-
-RewriteCond %{REQUEST_URI} !^\/(index\.php|assets\/dest\/.*) [OR]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [QSA,L]

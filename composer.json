@@ -3,7 +3,16 @@
     "description": "A website to generate passwords",
     "version": "1.1.4",
     "type": "project",
+    "keywords": [
+        "app",
+        "web",
+        "generator",
+        "password",
+        "numbers",
+        "characters"
+    ],
     "homepage": "https://github.com/jarne/GetWord",
+    "license": "MIT",
     "authors": [
         {
             "name": "Jarne",
@@ -12,19 +21,25 @@
         }
     ],
     "support": {
+        "issues": "https://github.com/jarne/GetWord/issues",
         "source": "https://github.com/jarne/GetWord"
     },
     "require": {
-        "php": ">=7.2",
         "ext-json": "*",
-        "jarne/password": "^1.3"
+        "jarne/password": "^1.3",
+        "php": ">=8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.2"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
-        "psr-0": {
-            "jarne\\getword": "src/"
+        "psr-4": {
+            "jarne\\getword\\": "src/jarne/getword/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "jarne\\getword\\tests\\": "tests/jarne/getword/"
         }
     }
 }

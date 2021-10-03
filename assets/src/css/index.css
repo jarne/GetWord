@@ -11,8 +11,23 @@ h1 {
     font-weight: 700;
 }
 
-li.breadcrumb-item.active {
+.password-display {
+    padding: 16px 24px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
     font-size: 24px;
+
+    background-color: #e9ecef;
+    color: #6c757d;
+
+    border-radius: 8px;
+}
+
+.btn-pw-display {
+    padding: 0 12px 6px 12px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,16 +36,18 @@ li.breadcrumb-item.active {
         color: #ececec;
     }
 
-    .breadcrumb,
-    .breadcrumb-item.active,
+    .password-display,
     .form-control,
     .form-control:focus {
         background-color: #313131;
         color: #acacac;
     }
 
-    .form-control,
-    .form-control:focus {
-        border-color: #9c9c9c;
+    .btn-pw-display {
+        color: #acacac;
+    }
+
+    .btn-pw-display:hover {
+        color: #ececec;
     }
 }

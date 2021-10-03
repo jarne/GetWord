@@ -7,11 +7,16 @@ namespace jarne\getword;
 
 use jarne\password\Password;
 
-class GetWord {
+class GetWord
+{
     /* @var Password */
-    private $password;
+    private Password $password;
 
-    public function __construct() {
+    /**
+     * Initialize password library
+     */
+    public function __construct()
+    {
         $this->password = new Password();
     }
 
@@ -21,30 +26,31 @@ class GetWord {
      * @param array $server
      * @return string
      */
-    public function process(array $server): string {
+    public function process(array $server): string
+    {
         $requestUri = $server["REQUEST_URI"];
         $urlParts = explode("/", $requestUri);
 
-        if(count($urlParts) > 6 AND $urlParts[1] === "api") {
+        if (count($urlParts) > 6 and $urlParts[1] === "api") {
             $length = $urlParts[2];
             $useLetters = $urlParts[3];
             $useNumbers = $urlParts[4];
             $useSpecialCharacters = $urlParts[5];
             $easyToRemember = $urlParts[6];
 
-            if($this->isValidLength($length)) {
-                if($this->isValidPercentage($useLetters) AND $this->isValidPercentage(
+            if ($this->isValidLength($length)) {
+                if ($this->isValidPercentage($useLetters) and $this->isValidPercentage(
                         $useNumbers
-                    ) AND $this->isValidPercentage($useSpecialCharacters)) {
-                    if($easyToRemember === "true") {
-                        $generatedPassword = $this->getPassword()->generateEasyToRemember(
+                    ) and $this->isValidPercentage($useSpecialCharacters)) {
+                    if ($easyToRemember === "true") {
+                        $generatedPassword = $this->password->generateEasyToRemember(
                             $length,
                             $useLetters,
                             $useNumbers,
                             $useSpecialCharacters
                         );
                     } else {
-                        $generatedPassword = $this->getPassword()->generate(
+                        $generatedPassword = $this->password->generate(
                             $length,
                             $useLetters,
                             $useNumbers,
@@ -70,7 +76,7 @@ class GetWord {
             );
         }
 
-        return file_get_contents("templates/index.html");
+        return file_get_contents("../templates/index.html");
     }
 
     /**
@@ -79,9 +85,10 @@ class GetWord {
      * @param string $value
      * @return bool
      */
-    public function isValidPercentage(string $value): bool {
-        if(is_numeric($value)) {
-            return ($value >= 0) AND ($value <= 100);
+    public function isValidPercentage(string $value): bool
+    {
+        if (is_numeric($value)) {
+            return ($value >= 0) and ($value <= 100);
         }
 
         return false;
@@ -93,9 +100,10 @@ class GetWord {
      * @param string $length
      * @return bool
      */
-    public function isValidLength(string $length): bool {
-        if(is_numeric($length)) {
-            return ($length > 0) AND ($length <= 100);
+    public function isValidLength(string $length): bool
+    {
+        if (is_numeric($length)) {
+            return ($length > 0) and ($length <= 100);
         }
 
         return false;
@@ -104,14 +112,8 @@ class GetWord {
     /**
      * Set content type to JSON
      */
-    public function goingToReturnJson(): void {
+    public function goingToReturnJson(): void
+    {
         header("Content-Type: application/json");
-    }
-
-    /**
-     * @return Password
-     */
-    public function getPassword(): Password {
-        return $this->password;
     }
 }
