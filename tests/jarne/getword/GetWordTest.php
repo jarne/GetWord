@@ -13,6 +13,18 @@ use PHPUnit\Framework\TestCase;
 class GetWordTest extends TestCase
 {
     /**
+     * Test constructor and library initialization
+     *
+     * @covers ::__construct
+     */
+    public function testConstructor(): void
+    {
+        $getWord = new GetWord();
+
+        $this->assertTrue(property_exists($getWord, "password"));
+    }
+
+    /**
      * Test if the website returns valid data
      *
      * @covers ::process
@@ -64,7 +76,7 @@ class GetWordTest extends TestCase
      * @covers ::process
      * @runInSeparateProcess
      */
-    public function checkApiFailed(): void
+    public function testApiInvalid(): void
     {
         $getWord = new GetWord();
 
