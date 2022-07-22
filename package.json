@@ -24,7 +24,7 @@
         "url": "https://github.com/jarne/GetWord.git"
     },
     "scripts": {
-        "format": "./node_modules/.bin/prettier --write \"**/*.{js,css,json,yml,md}\""
+        "format": "./node_modules/.bin/prettier --write \"**/*.{js,css,html,json,yml,md}\""
     },
     "dependencies": {
         "bootstrap": "^5.2",
