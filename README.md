@@ -25,10 +25,11 @@
 ## 📙 Description
 
 GetWord is a website to generate passwords with various features:
-- Length
-- Percentage of letters, numbers, special characters
-- Generate easy to remember passwords (with more vowels)
-- Copy to clipboard and generate a new one using buttons at the top
+
+-   Length
+-   Percentage of letters, numbers, special characters
+-   Generate easy to remember passwords (with more vowels)
+-   Copy to clipboard and generate a new one using buttons at the top
 
 <img src=".github/.media/screenshot.png" alt="Screenshot of GetWord web app">
 

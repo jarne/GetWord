@@ -1,29 +1,29 @@
 version: 2
 
 jobs:
-  build:
-    docker:
-      - image: circleci/php:8.0-node
-    steps:
-      # Checkout branch
-      - checkout
+    build:
+        docker:
+            - image: circleci/php:8.0-node
+        steps:
+            # Checkout branch
+            - checkout
 
-      # Install Composer dependencies
-      - restore_cache:
-          key: composer-{{ checksum "composer.json" }}
-      - run: composer install
-      - save_cache:
-          key: composer-{{ checksum "composer.json" }}
-          paths:
-            - vendor
+            # Install Composer dependencies
+            - restore_cache:
+                  key: composer-{{ checksum "composer.json" }}
+            - run: composer install
+            - save_cache:
+                  key: composer-{{ checksum "composer.json" }}
+                  paths:
+                      - vendor
 
-      # Run tests with PHPUnit
-      - run: XDEBUG_MODE=coverage php vendor/bin/phpunit --log-junit test-results/phpunit/junit.xml --coverage-html coverage/coverage-report
+            # Run tests with PHPUnit
+            - run: XDEBUG_MODE=coverage php vendor/bin/phpunit --log-junit test-results/phpunit/junit.xml --coverage-html coverage/coverage-report
 
-      # Save test results
-      - store_test_results:
-          path: test-results
+            # Save test results
+            - store_test_results:
+                  path: test-results
 
-      # Save coverage report
-      - store_artifacts:
-          path: coverage/coverage-report
+            # Save coverage report
+            - store_artifacts:
+                  path: coverage/coverage-report
