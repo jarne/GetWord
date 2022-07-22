@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GetWord | main class
  */
@@ -39,9 +40,11 @@ class GetWord
             $easyToRemember = $urlParts[6];
 
             if ($this->isValidLength($length)) {
-                if ($this->isValidPercentage($useLetters) and $this->isValidPercentage(
+                if (
+                    $this->isValidPercentage($useLetters) and $this->isValidPercentage(
                         $useNumbers
-                    ) and $this->isValidPercentage($useSpecialCharacters)) {
+                    ) and $this->isValidPercentage($useSpecialCharacters)
+                ) {
                     if ($easyToRemember === "true") {
                         $generatedPassword = $this->password->generateEasyToRemember(
                             $length,

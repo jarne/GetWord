@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GetWord | tests file
  */
