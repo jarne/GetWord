@@ -5,5 +5,8 @@
 /vendor
 /node_modules
 
+# Built assets
+/public/assets/dest
+
 # PHPUnit cache
 /.phpunit.cache
