@@ -1,16 +1,19 @@
-version: 2
+version: 2.1
+
+orbs:
+    docker: circleci/docker@2.4.0
 
 jobs:
     phpunit:
         docker:
-            - image: cimg/php:8.1-node
+            - image: cimg/php:8.2-node
         steps:
             # Checkout branch
             - checkout
 
             # Manually install PHP extensions
             - run: |
-                  sudo pecl install xdebug
+                  echo "" | sudo pecl install xdebug
 
             # Install Composer dependencies
             - restore_cache:
@@ -33,7 +36,7 @@ jobs:
                   path: coverage/coverage-report
     phpstan:
         docker:
-            - image: cimg/php:8.1
+            - image: cimg/php:8.2
         steps:
             # Checkout branch
             - checkout
@@ -58,7 +61,7 @@ jobs:
                   path: test-results
     phpcs:
         docker:
-            - image: cimg/php:8.1
+            - image: cimg/php:8.2
         steps:
             # Checkout branch
             - checkout
@@ -83,9 +86,19 @@ jobs:
                   path: test-results
 
 workflows:
-    version: 2
     tests:
         jobs:
             - phpunit
             - phpstan
             - phpcs
+    docker-publish:
+        jobs:
+            - docker/publish:
+                  filters:
+                      tags:
+                          only: /.*/
+                      branches:
+                          ignore: /.*/
+                  registry: ghcr.io
+                  image: $CIRCLE_PROJECT_USERNAME/getword
+                  tag: "$CIRCLE_TAG,latest"
