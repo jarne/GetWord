@@ -24,16 +24,16 @@
         "url": "https://github.com/jarne/GetWord.git"
     },
     "scripts": {
-        "format": "./node_modules/.bin/prettier --write \"**/*.{js,css,html,json,yml,md}\""
+        "format": "prettier --write \"**/*.{js,css,html,json,yml,md}\""
     },
     "dependencies": {
-        "bootstrap": "^5.2",
+        "bootstrap": "^5.3",
         "gulp": "^4.0",
         "gulp-concat": "^2.6",
         "gulp-clean-css": "^4.3",
         "gulp-minify": "^3.1"
     },
     "devDependencies": {
-        "prettier": "^2.7"
+        "prettier": "^3.0"
     }
 }
