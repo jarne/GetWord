@@ -8,7 +8,7 @@
         <img src="https://img.shields.io/github/package-json/v/jarne/GetWord.svg" alt="Package version">
     </a>
     <a href="https://circleci.com/gh/jarne/GetWord">
-        <img src="https://circleci.com/gh/jarne/GetWord.svg?style=svg&circle-token=3900a66d4e66731b771e6e852552299bab0c9a84" alt="Build status">
+        <img src="https://circleci.com/gh/jarne/GetWord.svg?style=svg&circle-token=b7c01987c53a3e8d4919819c6e50e65a3fbb43e8" alt="Build status">
     </a>
     <a href="https://github.com/jarne/GetWord/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/jarne/GetWord.svg" alt="License">
