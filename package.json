@@ -24,6 +24,7 @@
         "url": "https://github.com/jarne/GetWord.git"
     },
     "scripts": {
+        "assets:build": "gulp",
         "format": "prettier --write \"**/*.{js,css,html,json,yml,md}\""
     },
     "dependencies": {
