@@ -8,7 +8,7 @@
         <img src="https://img.shields.io/github/package-json/v/jarne/GetWord.svg" alt="Package version">
     </a>
     <a href="https://circleci.com/gh/jarne/GetWord">
-        <img src="https://circleci.com/gh/jarne/GetWord.svg?style=svg&circle-token=b7c01987c53a3e8d4919819c6e50e65a3fbb43e8" alt="Build status">
+        <img src="https://circleci.com/gh/jarne/GetWord.svg?style=shield" alt="Build status">
     </a>
     <a href="https://github.com/jarne/GetWord/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/jarne/GetWord.svg" alt="License">
@@ -17,10 +17,7 @@
 
 ##
 
-[• Description](#-description)  
-[• Usage](#-usage)  
-[• Contribution](#-contribution)  
-[• License](#%EF%B8%8F-license)
+[Description](#-description) | [Usage](#-usage) | [Contribution](#-contribution) | [License](#%EF%B8%8F-license)
 
 ## 📙 Description
 
@@ -38,6 +35,14 @@ GetWord is a website to generate passwords with various features:
 ### Setup & requirements
 
 The application needs a modern version of PHP (PHP 8.0 or newer at the moment).
+
+### Docker image
+
+The recommended way to deploy GetWord is using its [Docker](./Dockerfile) image.
+
+The image can be pulled from the
+[GitHub Packages registry](https://github.com/users/jarne/packages/container/package/getword)
+using: `docker pull ghcr.io/jarne/getword:latest`.
 
 ## 🙋‍ Contribution
 
